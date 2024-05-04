@@ -21,6 +21,7 @@ public class ExtentReportListener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
         sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/test-output/api-testing.html");
+        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/index.html");
         sparkReporter.config().setReportName("API Testing");
         sparkReporter.config().setDocumentTitle("API Testing Report");
         extent.attachReporter(sparkReporter);
@@ -29,11 +30,11 @@ public class ExtentReportListener implements ITestListener {
     @Override
     public void onFinish(ITestContext context) {
         extent.flush();
-        try {
-            Desktop.getDesktop().browse(new File("test-output/api-testing.html").toURI());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     Desktop.getDesktop().browse(new File("test-output/api-testing.html").toURI());
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
     }
 
     @Override
